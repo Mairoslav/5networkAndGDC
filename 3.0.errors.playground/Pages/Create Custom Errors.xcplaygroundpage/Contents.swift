@@ -68,6 +68,7 @@ enum InputError: Error {
 
 func handleInput() throws -> Bool {
     do {
+        // try handleInput()
         try processInput() // not shown; can throw any possible InputError
     } catch InputError.invalidKey(let code) {
         print("invalid key \(code)")
