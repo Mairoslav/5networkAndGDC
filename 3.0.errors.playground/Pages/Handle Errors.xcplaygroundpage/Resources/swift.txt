@@ -1,0 +1,1 @@
+This is a Swift! Yeah this is the content, written in swift.text file under Resources folder
