@@ -66,10 +66,19 @@ enum InputError: Error {
     case unknownInputDevice
 }
 
+// https://knowledge.udacity.com/questions/894225 f you want the code to work as expected you need to create the method processInput, something like this, check enum and func processInput():
+
+enum customError: Error {
+    case error
+}
+
+func processInput() throws {
+    throw customError.error
+}
+
 func handleInput() throws -> Bool {
     do {
-        try handleInput()
-        // try processInput() // not shown; can throw any possible InputError
+        try processInput() // not shown; can throw any possible InputError
     } catch InputError.invalidKey(let code) {
         print("invalid key \(code)")
     } catch InputError.unknownInputDevice {

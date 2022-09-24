@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' buildActiveScheme='true' importAppTypes='true'>
+    <pages>
+        <page name='1. Intro'/>
+        <page name='2. URL'/>
+        <page name='3. URLComponents'/>
+        <page name='3.1. URLComponents'/>
+        <page name='4. Storing URLComponents'/>
+        <page name='5. URLSession and Data Tasks'/>
+        <page name='6. Making Network Requests'/>
+        <page name='7. Interview with Kaya Thomas HTTPS'/>
+        <page name='8. App Transport Security'/>
+        <page name='9. Multithreading and the Main Thread'/>
+        <page name='10. Changing Data Task to Download Task'/>
+        <page name='11. Summary'/>
+    </pages>
+</playground>
