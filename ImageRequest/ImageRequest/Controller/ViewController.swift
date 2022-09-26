@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     
     // 02:15 so that we can easily change which of these values we're working with. I'll set it equal to the .http rawValue for now ~ 02:30 So, we know the address of the image we want to retrieve
     let imageLocation = KittenImageLocation.http.rawValue // why says: "The resource could not be loaded because the App Transport Security policy requires the use of a secure connection." when I set the www.kittenswhiskers.com in Exception Domains via NSThirdPartyExceptionAllowsInsecureHTTPLoads in Info.plist
-    // let imageLocation = KittenImageLocation.https.rawValue // why does not display the image from website?
+    // let imageLocation = KittenImageLocation.https.rawValue
     // let imageLocation = KittenImageLocation.error.rawValue
     
     override func viewDidLoad() {
@@ -102,5 +102,4 @@ class ViewController: UIViewController {
  Source: Udacity course and GitHub https://github.com/wsigel/ImageRequest/blob/master/ImageRequest/Controller/ViewController.swift
  https://github.com/wsigel/ImageRequest/blob/master/ImageRequest/Info.plist
  */
-
 
