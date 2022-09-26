@@ -10,8 +10,7 @@ import UIKit
 // to load an image from a URL, three URL strings, one http, one https and one string that isn't a real URL
 enum KittenImageLocation: String {
     case http = "http://www.kittenswhiskers.com/wp-content/uploads/sites/23/2014/02/Kitten-playing-with-yarn.jpg"
-    // case https = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Kitten_in_Rizal_Park%2C_Manila.jpg/460px-Kitten_in_Rizal_Park%2C_Manila.jpg"
-    case https = "https://www.obi.ch/bilder/glasbild-wolf-70-x-100-cm/p/5553581"
+    case https = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Kitten_in_Rizal_Park%2C_Manila.jpg/460px-Kitten_in_Rizal_Park%2C_Manila.jpg"
     case error = "not a url"
 }
 
@@ -43,8 +42,7 @@ class ViewController: UIViewController {
         
         // MARK: first alternative: using a DataTask
         // completionHandler: <#T##(Data?, URLResponse?, Error?) -> Void#>) ** (commented out as per 10. Changing Data Task to Download Task)
-        let task = URLSession.shared.dataTask(with: imageUrl) { (data, response,
-        error) in // we have the in keyword to signal that this is the code that we want to execute
+        let task = URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in // we have the in keyword to signal that this is the code that we want to execute
             // 04:49 We specified a completion handler or a closure that should be executed to handle a response. Let's implement it to check whether or not we got data back, and if we did, convert it to a UIImage and then update the UI. If the request was not successfull, let's exit early using guard. We can do this by ensuring that we got data back, and if not, that means an error occured.
             guard let data = data else {
                 print("no data, or there was an error")
@@ -104,4 +102,5 @@ class ViewController: UIViewController {
  Source: Udacity course and GitHub https://github.com/wsigel/ImageRequest/blob/master/ImageRequest/Controller/ViewController.swift
  https://github.com/wsigel/ImageRequest/blob/master/ImageRequest/Info.plist
  */
+
 
