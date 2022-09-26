@@ -16,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		44A8091A28E247F300068D83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44C3F79528DA4B6200EAD428 /* ImageRequest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageRequest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44C3F79828DA4B6200EAD428 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44C3F79A28DA4B6200EAD428 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -23,8 +24,6 @@
 		44C3F79F28DA4B6200EAD428 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		44C3F7A128DA4B6300EAD428 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44C3F7A428DA4B6300EAD428 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		44C3F7A628DA4B6300EAD428 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		44C6679628DF950C00ED0B3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				44C3F79728DA4B6200EAD428 /* ImageRequest */,
-				44C6679628DF950C00ED0B3C /* Info.plist */,
 				44C3F79628DA4B6200EAD428 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,7 +73,7 @@
 		44C3F79728DA4B6200EAD428 /* ImageRequest */ = {
 			isa = PBXGroup;
 			children = (
-				44C3F7A628DA4B6300EAD428 /* Info.plist */,
+				44A8091A28E247F300068D83 /* Info.plist */,
 				4451D6D528DA5CAE000AD010 /* Model */,
 				44C3F7AD28DA575000EAD428 /* View */,
 				4451D6D428DA5B9B000AD010 /* Controller */,
