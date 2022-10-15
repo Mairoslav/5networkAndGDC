@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' buildActiveScheme='true' importAppTypes='true'>
+    <pages>
+        <page name='1.Intro'/>
+        <page name='2. The Dog API'/>
+        <page name='3. Interview with Kaya Thomas APIs and Web Services'/>
+        <page name='4. An App Idea'/>
+        <page name='5. Starting the Project'/>
+        <page name='6. Storing the Endpoint'/>
+        <page name='7. Making the Request'/>
+        <page name='8. What is JSON?'/>
+        <page name='9. Parsing JSON with JSONSerialization'/>
+        <page name='10. Interview with Kaya Thomas.Codable'/>
+        <page name='11. Introducing the Codable Protocol'/>
+        <page name='12. From JSON to Struct with Codable'/>
+        <page name='13. Fetching the Image'/>
+        <page name='14. A Quick Detour on Closures'/>
+        <page name='15. Chaining Requests Refactor Part 1  &amp; 2'/>
+        <page name='16. Challenge '/>
+        <page name='17. Summary'/>
+    </pages>
+</playground>
