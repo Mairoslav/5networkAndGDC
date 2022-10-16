@@ -107,6 +107,7 @@ do {
     // 04:14 Once we have added all the cases, the playground should re-execute and we can see if our house was created successfully.
     // 04:20 So we have maped the JSON keys to our own Swift property names. There's just one more thing I'd like to show you about CodingKeys before you try it out on your own. Remember the location case?
 
-    
+   
+
     
 
