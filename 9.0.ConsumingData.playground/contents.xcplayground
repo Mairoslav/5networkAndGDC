@@ -6,5 +6,16 @@
         <page name='3. A New Feature'/>
         <page name='4. Breed List Response'/>
         <page name='5. Coding Keys'/>
+        <page name='6. Coding Keys Walkthrough A'/>
+        <page name='6. Coding Keys Walkthrough B'/>
+        <page name='7. JSON Arrays A'/>
+        <page name='7. JSON Arrays B'/>
+        <page name='8. Arrays Walkthrough A'/>
+        <page name='8. Arrays Walkthrough B'/>
+        <page name='9. Nested JSON Objects'/>
+        <page name='10. Nested Objects Walkthrough A'/>
+        <page name='10. Nested Objects Walkthrough B'/>
+        <page name='11. Accessing Keys and Values Directly'/>
+        <page name='11. Accessing Keys and Values Directly QUIZ'/>
     </pages>
 </playground>

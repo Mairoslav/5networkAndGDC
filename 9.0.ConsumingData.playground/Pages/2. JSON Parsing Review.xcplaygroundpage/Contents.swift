@@ -33,7 +33,7 @@ import Foundation // 1. had to improt Foundation
 
 // MARK: JSON data
 // temprary commented out from line 36 to line 77
-/*
+
 var jsons = """
     {
         "name": "Pluto",
@@ -74,7 +74,7 @@ do {
     print(error)
     
 }
-*/
+
 
 // 01:57 We created a model object for our JSON data, and used the JSON decoder to convert the data into an instance of the planet struct. That's all we need to do here. Throughout this lesson you're going to encounter a lot of very JSON examples and that's by design. Whatever the JSON data represents, it can be parsed using the same techniques which can in turn be used in real-world apps. Speaking of apps, we're still working on the ranDog app from the last lesson and there's still some features to add which will benefit from JSON parsing techniques. Let's see how next.
 
