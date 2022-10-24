@@ -30,30 +30,16 @@ var json = """
 }
 """.data(using: .utf8)!
 
-/*
-struct Status: Codable {
-    let ok: String
-}
-*/
-
 struct Dog: Codable {
-    let african: [String]
-    let australian: [String]
-    let basenji: [String]
-    let buhund: [String]
+    let dog: [String: [String]]
+    let status: String
 }
 
 do {
-    let dogDict = try JSONDecoder().decode([String: Dog].self, from: json)
+    let dogDict = try JSONDecoder().decode(Dog.self, from: json)
     print(dogDict)
 } catch {
     print(error)
 }
-
-/*
- // FIXME: once below part is commented out from json all works, how it can work when this part is left there?
- ,
- "status": "ok"
- */
 
 //: [Next](@next)

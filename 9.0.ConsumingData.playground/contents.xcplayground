@@ -17,5 +17,10 @@
         <page name='10. Nested Objects Walkthrough B'/>
         <page name='11. Accessing Keys and Values Directly'/>
         <page name='11. Accessing Keys and Values Directly QUIZ'/>
+        <page name='12. Breeds List Setup'/>
+        <page name='13. Filter By Breed'/>
+        <page name='14. Populate the Breeds List'/>
+        <page name='15. Breeds List Walkthrough'/>
+        <page name='16. Interview with KT JSON Parsing'/>
     </pages>
 </playground>
