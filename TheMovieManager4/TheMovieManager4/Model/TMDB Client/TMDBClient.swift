@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: 10. Create Session ID
-// TMBDClient / PostSession.swift / SessionResponse.swift
+// TMBDClient / PostSession.swift / SessionResponse.swift / LoginViewController.swift
 
 class TMDBClient {
     
