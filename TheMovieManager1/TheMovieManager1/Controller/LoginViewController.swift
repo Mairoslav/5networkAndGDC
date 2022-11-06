@@ -37,6 +37,13 @@ class LoginViewController: UIViewController {
 
 // MARK: few tasks below the video to complete
 
-// 1. Movie Manager Setup - in TMDBClient.swift replace static let apiKey = "YOUR_TMDB_API_KEY" with your API key. CONTINUE HERE
+// 1. Movie Manager Setup - in TMDBClient.swift replace static let apiKey = "YOUR_TMDB_API_KEY" with your API key. Done see TMDBClient.swift, static let apiKey changed from "YOUR_TMDB_API_KEY" to "841622fb8a5a4f75f298f96cb8ba7cd9"
+
+// 2. What is the name of the controller class responsible for presenting the user's favorite movies in The Movie Manager? Hint: Take a look at TMDBClient.swift and the enum used to build URLs. Correct! FavoritesViewController. There's not much going on yet, but you'll use it as you add features to the app.
+
+// 3. Looking at the code for The Movie Manager (or the documentation), what is the base URL for the Movie Database API? (The "base URL" is the URL in which endpoints are added to make specific requests). Correct, in TMDBClient.swift, the Endpoints enum is used to build URLs. The base URL is https://api.themoviedb.org/3
+
+// 4. Run the starter project for the Movie Manager and tap the login button. If you switch to the watchlist tab, why aren't any movies listed? No wrong answer, my try: "because no JSON was added yet to the app". Udacity: One reason is that we don't know which user's watchlist to retrieve. The user also needs to authenticate in order to see their watchlist, but there is currently no authentication in the app.
+
 
 

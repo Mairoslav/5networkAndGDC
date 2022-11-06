@@ -6,5 +6,10 @@
         <page name='3. TMDB Setup'/>
         <page name='4. API Keys'/>
         <page name='5. Movie Manager Tour'/>
+        <page name='6. Travis Bell Auth Flow'/>
+        <page name='7. GET The Request Token'/>
+        <page name='8. POST Requests in Swift'/>
+        <page name='9. Login with Email And Password'/>
+        <page name='10. Create Session ID'/>
     </pages>
 </playground>

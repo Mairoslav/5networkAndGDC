@@ -26,10 +26,22 @@ import Foundation
  - On the left pane, select "API" (you can also navigate directly here: https://www.themoviedb.org/settings/api)
  - Click "Create an API key"
  - Fill in the form information (the project name should be "The Movie Manager" and the purpose should be "Education"
- - When you're finished, copy the string under "API Key (v3 auth)". This is the API key you'll be using for the movie manager app.
+ - // TODO: When you're finished, copy the string under "API Key (v3 auth)"***. This is the API key you'll be using for the movie manager app.
  */
 
 // MARK: Reflect
 // API keys are used to identify apps that use a web service. What do you think would happen if one developer's API key fell into someoe else's hands?
+
+/*
+ Creating API key
+ API Key (v3 auth):
+ 841622fb8a5a4f75f298f96cb8ba7cd9 // TODO: copy this String, this is the API key you'll be using for the movie manager app
+ 
+ Example API Request:
+ https://api.themoviedb.org/3/movie/550?api_key=841622fb8a5a4f75f298f96cb8ba7cd9
+ 
+ API Read Access Token (v4 auth):
+ eyJhbGciOiJIUzI1Ni.eyJhdWQiOiI4NDE2MjJmYjhhNWE0Zjc1ZjI5OGY5NmNiOGJhN2NkOSIsInN1YiI6IjYzNjAyZTExMzM5NmI5MDA5MWQ4NjQ1ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.vj6ERuoX1oCxb9-YNrzuxUF_5CgmGzE8TOj3b_o84lY
+ */
 
 //: [Next](@next)

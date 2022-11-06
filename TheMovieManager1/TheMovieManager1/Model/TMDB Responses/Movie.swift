@@ -8,7 +8,7 @@
 
 import Foundation
 
-// 5. Movie Manager Tour, // 02:40 ... Movie is another struct that conforms to the Codable protocol (see/switch to Movie.swift file). THere were a lot of properties as well as a CodingKeys enum for each one. Its not important to know each of these properties, but I ahve linked the documentation below so that you can see how the Movie Results struct and the nested Array of Movies reflects the JSON responses structure.
+// 5. Movie Manager Tour, // 02:40 ... Movie is another struct that conforms to the Codable protocol (see/switch to Movie.swift file). THere were a lot of properties as well as a CodingKeys enum for each one. Its not important to know each of these properties, but I have linked the documentation below/see here: https://developers.themoviedb.org/3/account/get-movie-watchlist so that you can see how the Movie Results struct and the nested Array of Movies reflects the JSON responses structure.
 // 5. Movie Manager Tour, // 03:22 We store our app data in MovieModel.swift file, move there...
 struct Movie: Codable, Equatable {
     

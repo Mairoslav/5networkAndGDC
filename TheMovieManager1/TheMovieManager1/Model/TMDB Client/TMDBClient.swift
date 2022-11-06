@@ -8,9 +8,12 @@
 
 import Foundation
 
+// MARK: 5. Movie Manager Tour
+// TMDBClient.swift / Movie.swift / MovieModel.swift / WatchlistViewController.swift / LoginViewController.swift ...
+
 class TMDBClient {
     
-    static let apiKey = "YOUR_TMDB_API_KEY" // 5. Movie Manager Tour, // 01:09 First, we have a static property for the API key. I have a placeholder here, but you should replace it with your API key that you created in previous step.
+    static let apiKey = "841622fb8a5a4f75f298f96cb8ba7cd9" // 5. Movie Manager Tour, // 01:09 First, we have a static property for the API key. I have a placeholder here, but you should replace it with your API key that you created in previous step. So from "YOUR_TMDB_API_KEY" to "841622fb8a5a4f75f298f96cb8ba7cd9"
     
     // 5. Movie Manager Tour, // 01:16 We also have this structure called Auth, short for authentication, define inside the TMDBClients Class. There is a property for the account ID as well as String properties for request token and session ID. IF you do not know what these are at this point that's OK. We will hear from Travis again shortly to discull authenticatio in more detail. Remember these properties are static. So you reference them by class or struct name followed by a period, followed by the name of the static property that do no belong to any instance of the TMDBClints class e.g. "Auth.accountId".
     
@@ -20,9 +23,9 @@ class TMDBClient {
         static var sessionId = ""
     }
     
-    // 5. Movie Manager Tour, // 01:54 In order to make requests to this API, we need endpoints. Here we have an enum called endpoints and a single case to getWatchlist. Endpoints are contructed from the base URL and associated value* down here generates the full path.
+    // 5. Movie Manager Tour, // 01:54 In order to make requests to this API, we need endpoints. Here we have an enum called Endpoints and a single case to getWatchlist. Endpoints are contructed from the base URL and associated value* down here generates the full path.
     enum Endpoints {
-        static let base = "https://api.themoviedb.org/3"
+        static let base = "https://api.themoviedb.org/3" // The "base URL" i.e. the URL in which endpoints are added to make specific requests
         static let apiKeyParam = "?api_key=\(TMDBClient.apiKey)"
         
         case getWatchlist
