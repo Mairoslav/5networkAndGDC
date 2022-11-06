@@ -109,8 +109,8 @@ class TMDBClient {
                 let decoder = JSONDecoder()
                 // TODO: 7.1 The result should be parsed into the "SessionResponse" struct created in the previous step.
                 let responseObject = try decoder.decode(SessionResponse.self, from: data) // no RequestTokenResponse
-                // TODO: 7.2 If the parsing is successful, set the "sessionId" in the "Auth" struct.
-                Auth.requestToken = responseObject.sessionId // 01:26 And then instead of updating the "requestToken" after parsing the response, you can just update the "sessionId" in the home struct here
+                // TODO: 7.2 If the parsing is successful, set the "sessionId" in the "Auth" struct. I.e. instead of Auth.requestToken write Auth.sessionId
+                Auth.sessionId = responseObject.sessionId // 01:26 And then instead of updating the "requestToken" after parsing the response, you can just update the "sessionId" in the home struct here
                 // 01:05 (video1), 02:14 (video2) Everything else is just going to look like the login* method we have just created. Note difference from previous lesson between methods login and getWatchlist due to URL vs URLRequest.
                 // TODO: 8. Call the completion hanlder with the correct values, where appropriate.
                 completion(true, nil)
