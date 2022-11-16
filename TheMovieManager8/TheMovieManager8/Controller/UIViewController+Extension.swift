@@ -1,0 +1,24 @@
+//
+//  UIViewController+Extension.swift
+//  TheMovieManager
+//
+//  Created by Owen LaRosa on 8/13/18.
+//  Copyright © 2018 Udacity. All rights reserved.
+//
+
+import UIKit
+
+extension UIViewController {
+    
+    // MARK: Reflect - because of implementing a "taskForDELETERequest" method in "TMDBClient.swift" here removing async()
+    
+    @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
+        // DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+            print("now logged out")
+        // }
+    }
+}
+
+
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' buildActiveScheme='true' importAppTypes='true'>
+    <pages>
+        <page name='1. Intro'/>
+        <page name='2. Interview with Travis Favorite Apps'/>
+        <page name='3. Improving the Networking Architecture'/>
+        <page name='4. Refactoring taskForGETRequest'/>
+        <page name='5. Finish Refactoring taskForPOSTRequest'/>
+    </pages>
+</playground>

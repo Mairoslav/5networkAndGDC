@@ -52,7 +52,7 @@ class LoginViewController: UIViewController {
     // TODO: 9. In "LoginViewController.swift" add a "handleSessionResponse" method that takes a "Bool" and an "Error?" as parameters.
     // 02:18 Let's call method "createSessionId" back here in the "LoginViewController.swift". Again, I'll create a separate method to serve as the completion handler, and call it "handleSessionResponse", taking a Bool and optional error as parameters.
     func handleSessionResponse(success:Bool, error: Error?) {
-        // 02:28 As we call the "createSessionId" method, now moving to the body of above method...
+        // 02:28 As we call the "createSessionId" method above in the "handleLoginResponse" method, now moving to the body of above method... // 01:34 because we can only create the "sessionId" if the reqeustToken is already been validated, "handleLoginResponse" is where you'll call the method to create the "sessionId" passing in your completion handler function.
         // 02:41 Finally in "handleSessionResponse" method, we check if the request was successful.
         if success {
             // 02:46 And if so, we can complete the login by segueing to the next screen. Again, this will be wrapped in a call to async and we use self because we're in closure (not global scope). That's because performing the segue is supposed to happen on the "main-thread".

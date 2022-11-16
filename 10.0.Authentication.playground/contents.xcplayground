@@ -11,5 +11,11 @@
         <page name='8. POST Requests in Swift'/>
         <page name='9. Login with Email And Password'/>
         <page name='10. Create Session ID'/>
+        <page name='11. Interview Another Auth Question'/>
+        <page name='12. Working with URLs in iOS Apps'/>
+        <page name='13. OAuth-like Authentication in the Movie Manager'/>
+        <page name='14. Logging out'/>
+        <page name='15. DELETEing a Session'/>
+        <page name='16. Summary'/>
     </pages>
 </playground>
