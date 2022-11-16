@@ -18,6 +18,7 @@ class TMDBClient {
         static var accountId = 0
         static var requestToken = ""
         static var sessionId = ""
+        static var success = true
     }
     
     enum Endpoints {
@@ -239,9 +240,9 @@ class TMDBClient {
      
     class func logout(completion: @escaping () -> Void) {
         let body = LogoutRequest(sessionId: Auth.sessionId)
-        taskForDELETERequest(url: Endpoints.logout.url, responseType: RequestTokenResponse.self, body: body) { (response, error) in
+        taskForDELETERequest(url: Endpoints.logout.url, responseType: LogoutResponse.self, body: body) { (response, error) in
             if let response = response {
-                Auth.requestToken = response.requestToken
+                Auth.success = response.success 
                 completion()
             }
         }
