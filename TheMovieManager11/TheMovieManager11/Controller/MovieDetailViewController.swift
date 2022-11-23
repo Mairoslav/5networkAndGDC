@@ -28,9 +28,9 @@ class MovieDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
-        navigationItem.title = movie.title
         
+        navigationItem.title = movie.title
+        print("viewDidLoad")
         toggleBarButton(watchlistBarButtonItem, enabled: isWatchlist)
         toggleBarButton(favoriteBarButtonItem, enabled: isFavorite)
         
@@ -50,13 +50,11 @@ class MovieDetailViewController: UIViewController {
             // So, we'll get "isWatchlist" value again. Even though the watchlist has changed in the movie databases server, we have yet to update it in our app. So, if the movie is on the wachlist, tapping button means we  successfully deleted it from watchlist.
             if isWatchlist {
                 // So I'll set the "watchlist" and the "MovieModel" to every movie that's already in the watchlist, except for the one we deleted using filter.
-                print("isWatchlist so after watchlistButtonTapped deleted")
                 MovieModel.watchlist = MovieModel.watchlist.filter()
-                { $0 != self.movie }
+                { $0 != self.movie } // if use 1: "Contextual closure type '(Movie) throws -> Bool' expects 1 argument, but 2 were used in closure body"
             } else {
                 // 05:28 If it's not on the watchlist already, that means it was successfully added there after tapping the button. So we can just append it to the watchlist and the MovieModel
-                print("!isWatchlist so after watchlistButtonTapped is added")
-                MovieModel.watchlist.append(movie)
+                MovieModel.watchlist.append(movie) // add movie
             }
             // 05:36 Finally, I call "toggleBarButton" to update the UI, passing in the "watchlistBarButtonItem, and the new value for "isWatchlist". Now when we run the app and search for a movie, we can tap the watchlist on the detail page which becomes highlighted. Navigating back to the watchlist ViewController (i.e. 1st screen and mid button), we can see that this movie has been added to our watchlist. If we go back to the detail view, the button remains hihglighted, letting us know that this movie is on the watchlist. Tapping the buttn again will reset it to the non-highlighted state. If we navigate back to the watchlist, we can see that the movie has been removed. A lot of the logic we have here is specific to the movie manager, but the key takeaway is that you can make a POST request ("class func markWatchlist" has POST request that's why) just as easily as you maike a GET request. The only additional step is in passing the request body for task for a POST request. THen when you make changes to the data on the server, it is important also to do those changes on the client. If the data is not in sync or if the UI doesn't get updated correctly, this can get really confusing for your users. So we always update the state, when we know that a request has succeeded.
             toggleBarButton(watchlistBarButtonItem, enabled: isWatchlist)

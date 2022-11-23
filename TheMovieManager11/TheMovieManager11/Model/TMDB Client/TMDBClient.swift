@@ -57,9 +57,10 @@ class TMDBClient {
                     return Endpoints.base + "/search/movie" + Endpoints.apiKeyParam + "&query=\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"
                 // 01:57 and again, we handle it in the switch statements. We can concatenate the base URL + with the method name. I just pass in the "accountId" we already have in the Auth struct, so instead of ""account_id" I write "Auth.accountId". Remember that this is just ignored by the movie database.
                 // 02:14 we also need to send the API key along with the request so + "Endpoints.apiKeyParam"
+                // as per Q&A "Can you advice how can I make the watchlist button within detail view work properly?", added also "&session_id=\(Auth.sessionId)" because the session id is a required field when looking at the API documents, can see under "Query String". 
                 // 02:18 The request body, is in "MarkWatchlist.swift" ... transition there ...
                 case .markWatchlist:
-                    return Endpoints.base + "/account/\(Auth.accountId)/watchlist" + Endpoints.apiKeyParam
+                    return Endpoints.base + "/account/\(Auth.accountId)/watchlist" + Endpoints.apiKeyParam + "&session_id=\(Auth.sessionId)"
             }
         }
         var url: URL {
