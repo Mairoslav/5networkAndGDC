@@ -6,5 +6,9 @@
         <page name='3. Improving the Networking Architecture'/>
         <page name='4. Refactoring taskForGETRequest'/>
         <page name='5. Finish Refactoring taskForPOSTRequest'/>
+        <page name='6. Feature Favorites List'/>
+        <page name='7. Feature Search Movies'/>
+        <page name='8. Feature Add to Watchlist'/>
+        <page name='9. Add to Watchlist'/>
     </pages>
 </playground>
