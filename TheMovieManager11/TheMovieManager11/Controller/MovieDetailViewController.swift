@@ -37,7 +37,6 @@ class MovieDetailViewController: UIViewController {
     }
     
     @IBAction func watchlistButtonTapped(_ sender: UIBarButtonItem) {
-        print("watchlistButtonTapped")
     // 04:36 We'll call this one ("class func markWatchlist" from "TMDBClient.swift") on the "@IBAction func watchlistButtonTapped" in the "MovieDetailViewController.swift". Passing in the "movie.id". The starter code for TheMovieManager has "var isWatchlist: Bool" property above in line 19, which will be true if the movie is on the watchlist, and false if not. 04:49 By tapping the button, we change whether or not this is on the watchlist. So, I am going to negate it using the not operator (!). For the completion handler, I just created another method to handle the resonse called "handleWatchlistResponse", check it below this function.
         TMDBClient.markWatchlist(movieId: movie.id, watchlist: !isWatchlist, completion: handleWatchlistResponse(success:error:))
     }
@@ -46,7 +45,6 @@ class MovieDetailViewController: UIViewController {
     func handleWatchlistResponse(success: Bool, error: Error?) {
         // if the response was successful, there are either two things that happen, 1. the movie was added to the watchlist, or 2. it was removed.
         if success {
-            print("success")
             // So, we'll get "isWatchlist" value again. Even though the watchlist has changed in the movie databases server, we have yet to update it in our app. So, if the movie is on the wachlist, tapping button means we  successfully deleted it from watchlist.
             if isWatchlist {
                 // So I'll set the "watchlist" and the "MovieModel" to every movie that's already in the watchlist, except for the one we deleted using filter.
@@ -58,13 +56,30 @@ class MovieDetailViewController: UIViewController {
             }
             // 05:36 Finally, I call "toggleBarButton" to update the UI, passing in the "watchlistBarButtonItem, and the new value for "isWatchlist". Now when we run the app and search for a movie, we can tap the watchlist on the detail page which becomes highlighted. Navigating back to the watchlist ViewController (i.e. 1st screen and mid button), we can see that this movie has been added to our watchlist. If we go back to the detail view, the button remains hihglighted, letting us know that this movie is on the watchlist. Tapping the buttn again will reset it to the non-highlighted state. If we navigate back to the watchlist, we can see that the movie has been removed. A lot of the logic we have here is specific to the movie manager, but the key takeaway is that you can make a POST request ("class func markWatchlist" has POST request that's why) just as easily as you maike a GET request. The only additional step is in passing the request body for task for a POST request. THen when you make changes to the data on the server, it is important also to do those changes on the client. If the data is not in sync or if the UI doesn't get updated correctly, this can get really confusing for your users. So we always update the state, when we know that a request has succeeded.
             toggleBarButton(watchlistBarButtonItem, enabled: isWatchlist)
-        } else {
-            print("failure")
         }
     }
     
+    // MARK: 4. Make the reqeuest using "taskForPOSTRequest and call "markFavorite"'s completion handlder appropriately.
+    // 01:19 In the "MovieDetailViewController.swift" we make the reqeust when the "favoriteButtonTapped" is tapped.
     @IBAction func favoriteButtonTapped(_ sender: UIBarButtonItem) {
-        
+        // 01:27 Like before we have to check if the movie is already in the "favorite" list and then negate the value to either add or remove it from the "favorite" list. 01:30 Then in "handleFavoritesResponse" ...
+        TMDBClient.markFavorite(movieId: movie.id, favorite: !isFavorite, completion: handleFavoritesResponse(success:error:))
+    }
+    
+    // MARK: 4.1 Implement a new "handleFavoritesResponse" method to use as the completion handler above  when marking/tapping a favorite.
+    // 01:30 Then in "handleFavoritesResponse" we check if the request was successful.
+    func handleFavoritesResponse(success: Bool, error: Error?) {
+        if success {
+            // THen if the movie was already on the favorites list, we can just filter it out under isFavorite.
+            if isFavorite {
+                MovieModel.favorites = MovieModel.favorites.filter()
+                { $0 != self.movie }
+            // If it wasn't already on the favorites list, then we just append it there. Again, all of this is just like we did with the watchlist, and we had only a few lines of code to make the request, making it more straightforward to implement this feature in our app.
+            } else {
+                MovieModel.favorites.append(movie)
+            }
+        }
+        toggleBarButton(favoriteBarButtonItem, enabled: isFavorite)
     }
             
     

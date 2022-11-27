@@ -9,7 +9,10 @@
 import Foundation
 
 // MARK: 9. Add to Watchlist
-// TMDBClient.swift / MarkWatchlist.swift / MovieDetailViewController.swift
+// TMDBClient.swift / MarkWatchlist.swift / TMDBResponse.swift / MovieDetailViewController.swift
+
+// MARK: 10. Feature Add to Favorites
+// TMDBClient.swift / MarkFavorite.swift / TMDBResponse.swift / MovieDetailViewController.swift
 
 class TMDBClient {
 
@@ -36,6 +39,9 @@ class TMDBClient {
         case search(String)
         // 01:54 The 1st step is to add the endpoints to the enum, a case called "markWatchlist"
         case markWatchlist
+        // MARK: 1. Add the appropriate endpoint to the "Endpoints" enum
+        // 00:00 The code for adding and removing movie from the favorites list is nearly the same as managing the watchlist. Implementing this feature provide another opportunity to make a POST reqeust in our app and to see how our "taskForPOSTReqeust" method makes it much easier to add a new requests. Notice the similarities with adding and removing from the watchlist. The endpoint is called "markFovorite". 00:27 And we buil it ...
+        case markFavorite
         
         var stringValue: String {
             switch self {
@@ -61,6 +67,10 @@ class TMDBClient {
                 // 02:18 The request body, is in "MarkWatchlist.swift" ... transition there ...
                 case .markWatchlist:
                     return Endpoints.base + "/account/\(Auth.accountId)/watchlist" + Endpoints.apiKeyParam + "&session_id=\(Auth.sessionId)"
+                // MARK: 1.1 handle it in swith statement
+                // 00:27 And we build it from the URL just like we do with other requests, starting with the base URL + the endpoint for the documentation + and then adding parameters for the API key + and the session ID (can see in documentation under "Query String" that both parameters are required: api_key and also session_id. The request body for this method is in "MarkFavorite.swift" file ... move there ...
+                case .markFavorite:
+                    return Endpoints.base + "/account/\(Auth.accountId)/favorite" + Endpoints.apiKeyParam + "&session_id=\(Auth.sessionId)"
             }
         }
         var url: URL {
@@ -233,6 +243,23 @@ class TMDBClient {
         }
     }
     // 04:36 We'll call this one ("func markWatchlist") on the "@IBAction func watchlistButtonTapped" in the "MovieDetailViewController.swift". ... move there ...
+    
+    // MARK: 3. Create "markFavorite" method in "TMDBClient" that takes the movieId as a parameter, a Boolean flag, and an appropriate completion handler.
+    // 01:09 The code for marking favorite in "TMDBClient.swift" is just like the code for adding and removing from the watchlist. We just used a "MarkFavorite" struct as the request body and then pass in the appropriate endpoints when we call "taskForPOSTReqeust".
+    class func markFavorite(movieId: Int, favorite: Bool, completion: @escaping (Bool, Error?) -> Void) {
+        let body = MarkFavorite(mediaType: "movie", mediaId: movieId, favorite: favorite)
+        // MARK: 4. Make the reqeuest using "taskForPOSTRequest and call "markFavorite"'s completion handlder appropriately.
+        // 01:10 and then pass in the appropriate endpoints when we call "taskForPOSTReqeust". Everything else including how we handled the status codes is the same. 01:19 In the "MovieDetailViewController.swift" ... move there ...
+        // For step 5 move to "MovieDetailViewController.swift" ...
+        taskForPOSTRequest(url: Endpoints.markFavorite.url, responseType: TMDBResponse.self, body: body) { (response, error) in
+            if let response = response {
+                completion(response.statusCode == 1 || response.statusCode == 12 || response.statusCode == 13, nil)
+            } else {
+                completion(false, error)
+            }
+        }
+    }
+    
 }
 
 

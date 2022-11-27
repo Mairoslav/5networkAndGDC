@@ -120,3 +120,5 @@ class DogAPI {
 // 2e.I. 01:48 All right, so to actually parse theh JSON, let's take one more look at the documentation: https://dog.ceo/dog-api/documentation/ checking "List all breeds" window. The response is a JSON object with a String property called "status" with a value of "success". And in this "message" property, we have another JSON object. So, we're going to need our knowledge of nested JSON objects in order to parse this. If you look at the contents of this JSON object, we can see that each of the breeds are keys. Our app doesn't know these keys in advance, so to access them, we can use a dictionary like we did before. We're only concerned with the list of breeds and the rest of this data we actually do not need. So, I think we're all st on how to parse this. Let's go back into Xcode and do that now.
 // 2e.II. 02:33 To keep our project organized, I am going to add the struct in a new file but it could work anywhere. Under the Model group, I'll add a new Swift file and I'll call this BreedsListResponse... check it
 
+
+

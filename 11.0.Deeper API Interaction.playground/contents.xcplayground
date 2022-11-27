@@ -10,5 +10,10 @@
         <page name='7. Feature Search Movies'/>
         <page name='8. Feature Add to Watchlist'/>
         <page name='9. Add to Watchlist'/>
+        <page name='10. Feature Add to Favorites'/>
+        <page name='11. Add to Favorites'/>
+        <page name='12. Feature Poster Image on Detail View'/>
+        <page name='13. Feature Poster Images in Watchlist'/>
+        <page name='14. Summary'/>
     </pages>
 </playground>
