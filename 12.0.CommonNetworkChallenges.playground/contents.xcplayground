@@ -4,5 +4,11 @@
         <page name='1. Intro'/>
         <page name='2. Movie Manager Code Review'/>
         <page name='3. Code Review Placeholder Images'/>
+        <page name='4. Code Review Show Network Activity'/>
+        <page name='5. Enable and Disable UI Appropriately'/>
+        <page name='6. Code Review Wasted Network Calls'/>
+        <page name='7. Code Review Handling Errors'/>
+        <page name='8. Alert for login failure'/>
+        <page name='9. Your Turn Improve the Movie Manager'/>
     </pages>
 </playground>

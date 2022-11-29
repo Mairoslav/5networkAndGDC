@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loginViaWebsiteButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -53,4 +54,9 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: "completeLogin", sender: nil)
         }
     }
+    
+    // 02:55 Now let's close the "assistant editor" and "attributes inspector" and  go back into the "LoginViewController.swift". Our next task is to determine where to start and stop the spinning animation on the activity  indicator, and that depends on whether or not the usr is logging in.
+    // 03:11 I am going to integrate a new helper function called "setLoggingIn", so that we can uπdate the UI appropriately when the user is logging in. It will take a single Boolean parameter "_ loggingIn: Bool" which will be ture if we're currently loggin in and false if we're not.
+    // 03:26 If we are loggin in, that means we're accessing the network, so we want to signal network activity ...
+    
 }

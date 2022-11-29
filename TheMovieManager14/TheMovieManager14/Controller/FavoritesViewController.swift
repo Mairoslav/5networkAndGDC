@@ -8,6 +8,9 @@
 
 import UIKit
 
+// MARK: 3. Code Review: Placeholder Images - video2
+// FavoritesViewController.swift / MovieDetailViewController.swift
+
 class FavoritesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -52,6 +55,10 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
         let movie = MovieModel.favorites[indexPath.row]
         cell.textLabel?.text = movie.title
         
+        // task1: before movie image is loaded, "PosterPlaceholder" is shown in the favorites list next to the movie title.
+        // 00:13 set the cells' imageViews' image to UIImage, and like before it is going to be named "PosterPlaceholder". Move to "MovieDetailViewController.swift" ... 
+        cell.imageView?.image = UIImage(named: "PosterPlaceholder")
+    
         if let posterPath = movie.posterPath {
             TMDBClient.downloadPosterImage(path: posterPath) { (data, error) in
                 guard let data = data else {
