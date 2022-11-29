@@ -56,6 +56,7 @@ class LoginViewController: UIViewController {
             TMDBClient.createSessionId(completion: handleSessionResponse(success:error:))
         } else {
             // NEW: to enable buttons again to try another username and password to get login information correct
+            // Question: why when Login via Website, the alert message pops up, even though in version "TheMovieManager15.xcodeproj" I have not yet implemented login failure alert?
             setLoggingIn(false)
         }
     }

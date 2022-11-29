@@ -72,21 +72,27 @@ class LoginViewController: UIViewController {
         if loggingIn {
             activityIndicator.startAnimating()
         } else {
-            activityIndicator.stopAnimating()
+            DispatchQueue.main.async() {
+            self.activityIndicator.stopAnimating() // NEW: Error: "UIActivityIndicatorView.stopAnimating() must be used from main thread only", so added async()
+            }
         }
-        emailTextField.isEnabled = !loggingIn
-        passwordTextField.isEnabled = !loggingIn
-        loginButton.isEnabled = !loggingIn
-        loginViaWebsiteButton.isEnabled = !loggingIn
+        // NEW: after re-inserting email/password/button there is Error: "xyz.isEnabled must be used from main thread only", so added async()
+        DispatchQueue.main.async() { [self] in // Capture 'self' explicitly to enable implicit 'self' in this closure, added [self] in
+            emailTextField.isEnabled = !loggingIn
+            passwordTextField.isEnabled = !loggingIn
+            loginButton.isEnabled = !loggingIn
+            loginViaWebsiteButton.isEnabled = !loggingIn
+        }
     }
     
     // MARK: recap 4. Alert user (update UI) - and we use this error to present an alert in login view controller letting user know that an error occured.
     // 03:36 Great, so now after work in "TMDBClient.swift" & " TMDBResponse.swift" we have an error with a localized description passed back to our view controller. Let's use it to update the UI. Here in the "LoginViewController.swift" we hav a little convenience method to display an alert controller giving an error message (see the parameter name). Let's use this to tell the user what went wrong.
     // 03:55 We've only modified "taskForGETRequest" so we'll start in the "handleRequestTokenResponse" method, which is the completion handler for a GET request. ... move to "handleRequestTokenResponse" method (4th method above) ...
     func showLoginFailure(message: String) {
-        let alertVC = UIAlertController(title: "OooNo, Login Failed", message: message, preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "OooNo, Login Failed", message: "Seems like Email or Password are wrong, try again", preferredStyle: .alert) // NEW: instead writing message now writing directly "Seems like Email or Password are wrong, try again". 
         alertVC.addAction(UIAlertAction(title: "Okey", style: .default, handler: nil))
         show(alertVC, sender: nil)
+        setLoggingIn(false) // NEW: so that activity indicator stops rotating and fields are enabled for re-inserting Email/Password
     }
 
 }

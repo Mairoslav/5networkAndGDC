@@ -48,6 +48,9 @@ class LoginViewController: UIViewController {
         print(TMDBClient.Auth.requestToken)
         if success {
             TMDBClient.createSessionId(completion: handleSessionResponse(success:error:))
+        } else {
+            // NEW: to enable buttons again to try another username and password to get login information correct
+            setLoggingIn(false)
         }
     }
     
@@ -62,12 +65,17 @@ class LoginViewController: UIViewController {
         if loggingIn {
             activityIndicator.startAnimating()
         } else {
-            activityIndicator.stopAnimating()
+            DispatchQueue.main.async() {
+            self.activityIndicator.stopAnimating() // NEW: Error: "UIActivityIndicatorView.stopAnimating() must be used from main thread only", so added async()
+            }
         }
-        emailTextField.isEnabled = !loggingIn
-        passwordTextField.isEnabled = !loggingIn
-        loginButton.isEnabled = !loggingIn
-        loginViaWebsiteButton.isEnabled = !loggingIn
+        // NEW: after re-inserting email/password/button there is Error: "xyz.isEnabled must be used from main thread only", so added async()
+        DispatchQueue.main.async() { [self] in // Capture 'self' explicitly to enable implicit 'self' in this closure, added [self] in
+            emailTextField.isEnabled = !loggingIn
+            passwordTextField.isEnabled = !loggingIn
+            loginButton.isEnabled = !loggingIn
+            loginViaWebsiteButton.isEnabled = !loggingIn
+        }
     }
 
 }

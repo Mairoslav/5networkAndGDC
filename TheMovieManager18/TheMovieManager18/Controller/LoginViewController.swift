@@ -53,7 +53,10 @@ class LoginViewController: UIViewController {
         print(TMDBClient.Auth.requestToken)
         if success {
             TMDBClient.createSessionId(completion: handleSessionResponse(success:error:))
-        }
+        } /* else {
+            // NEW: to enable buttons again to try another username and password to get login information correct
+            setLoggingIn(false)
+        } */ // due to new alert, instead of applying it here, we apply it in UIAlertAction, check it down in this file.
     }
     
     func handleSessionResponse(success:Bool, error: Error?) {
@@ -67,12 +70,17 @@ class LoginViewController: UIViewController {
         if loggingIn {
             activityIndicator.startAnimating()
         } else {
-            activityIndicator.stopAnimating()
+            DispatchQueue.main.async() {
+            self.activityIndicator.stopAnimating() // NEW: Error: "UIActivityIndicatorView.stopAnimating() must be used from main thread only", so added async()
+            }
         }
-        emailTextField.isEnabled = !loggingIn
-        passwordTextField.isEnabled = !loggingIn
-        loginButton.isEnabled = !loggingIn
-        loginViaWebsiteButton.isEnabled = !loggingIn
+        // NEW: after re-inserting email/password/button there is Error: "xyz.isEnabled must be used from main thread only", so added async()
+        DispatchQueue.main.async() { [self] in // Capture 'self' explicitly to enable implicit 'self' in this closure, added [self] in
+            emailTextField.isEnabled = !loggingIn
+            passwordTextField.isEnabled = !loggingIn
+            loginButton.isEnabled = !loggingIn
+            loginViaWebsiteButton.isEnabled = !loggingIn
+        }
     }
     
     // MARK: recap 4. Alert user (update UI) - and we use this error to present an alert in login view controller letting user know that an error occured.
@@ -82,6 +90,7 @@ class LoginViewController: UIViewController {
         let alertVC = UIAlertController(title: "OooNo, Login Failed", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "Okey", style: .default, handler: nil))
         show(alertVC, sender: nil)
+        setLoggingIn(false) // NEW: due to new alert, instead of applying it above in "handleRequestTokenResponse", we apply it in here in UIAlertAction, check it down in this file.
     }
 
 }
