@@ -14,7 +14,7 @@ import Foundation
 
 class TMDBClient {
 
-    // 04:15 Now before we run it, notice how I've changed our API key to just an empty String - previous commented out* (previous causing the activity indicator to rotate to infinite ~ Question1: how to cancel activity indicator after alert appears and make fields active for inserting Email & Password?). This is to force an error to occur.
+    // 04:15 Now before we run it, notice how I've changed our API key to just an empty String - previous commented out*. This is to force an error to occur.
     // 04:22 With an invalid apiKey, our request to the movie database should be rejected which will return an error. Let's see what happens. After typing login (having insterted wrong passwor or username), awesome, we get an alert. Well, a lot of the logic hre is specific to the Movie Manager. Using your own custom objects to handle errors will really come in handy as you build your own apps. Let's recap what we did to implement error handling... check recap in bolt comments.
     // 05:18 This is a great start to handling errors in TheMovieManager app. But now we're only handling errors for GET Requests. To better understand how the errors are handled, see if you can implement the same behaviour in "taskForPOSTRequest". Then in completion handlers for logging in and creating the sessionId, display an alert with the localized description as the error message. Done in "TheMovieManager19.xcodeproj".
     

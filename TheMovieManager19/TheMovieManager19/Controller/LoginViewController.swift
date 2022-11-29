@@ -89,7 +89,7 @@ class LoginViewController: UIViewController {
     // 03:36 Great, so now after work in "TMDBClient.swift" & " TMDBResponse.swift" we have an error with a localized description passed back to our view controller. Let's use it to update the UI. Here in the "LoginViewController.swift" we hav a little convenience method to display an alert controller giving an error message (see the parameter name). Let's use this to tell the user what went wrong.
     // 03:55 We've only modified "taskForGETRequest" so we'll start in the "handleRequestTokenResponse" method, which is the completion handler for a GET request. ... move to "handleRequestTokenResponse" method (4th method above) ...
     func showLoginFailure(message: String) {
-        let alertVC = UIAlertController(title: "OooNo, Login Failed", message: "Seems like Email or Password are wrong, try again", preferredStyle: .alert) // NEW: instead writing message now writing directly "Seems like Email or Password are wrong, try again". 
+        let alertVC = UIAlertController(title: "OooNo, Login Failed", message: "Seems like Email or Password are wrong, try again", preferredStyle: .alert) // NEW: instead writing message now writing directly "Seems like Email or Password are wrong, try again".
         alertVC.addAction(UIAlertAction(title: "Okey", style: .default, handler: nil))
         show(alertVC, sender: nil)
         setLoggingIn(false) // NEW: so that activity indicator stops rotating and fields are enabled for re-inserting Email/Password
