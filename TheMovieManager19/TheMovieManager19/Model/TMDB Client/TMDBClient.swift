@@ -18,8 +18,8 @@ class TMDBClient {
     // 04:22 With an invalid apiKey, our request to the movie database should be rejected which will return an error. Let's see what happens. After typing login (having insterted wrong passwor or username), awesome, we get an alert. Well, a lot of the logic hre is specific to the Movie Manager. Using your own custom objects to handle errors will really come in handy as you build your own apps. Let's recap what we did to implement error handling... check recap in bolt comments.
     // 05:18 This is a great start to handling errors in TheMovieManager app. But now we're only handling errors for GET Requests. To better understand how the errors are handled, see if you can implement the same behaviour in "taskForPOSTRequest". Then in completion handlers for logging in and creating the sessionId, display an alert with the localized description as the error message. Done in "TheMovieManager19.xcodeproj".
     
-    static let apiKey = "841622fb8a5a4f75f298f96cb8ba7cd9" // commented out
-    // static let apiKey = ""
+    // static let apiKey = "841622fb8a5a4f75f298f96cb8ba7cd9" // commented out
+    static let apiKey = ""
     /*
     WHEN static let apiKey =                    ""         "841622fb8a5a4f75f298f96cb8ba7cd9"
     can Login with correct Email and Password:  NO          YES
