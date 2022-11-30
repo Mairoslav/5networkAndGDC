@@ -40,12 +40,12 @@ class LoginViewController: UIViewController {
     func handleRequestTokenResponse (success: Bool, error: Error?) {
         if success {
             print(TMDBClient.Auth.requestToken)
-                TMDBClient.login(username: self.emailTextField.text ?? "nil", password: self.passwordTextField.text ?? "nil", completion: self.handleLoginResponse(success:error:)) /// changed from Error to error
+                TMDBClient.login(username: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "", completion: self.handleLoginResponse(success:error:)) /// changed from Error to error
         } else {
-            // 04:02 If success is FALSE, then an error occurred. So in the else case, we can call "showLoginFailure" passing in error.localizedDescription making sure it's not nil thanks to expression ? "".
-            // MARK: 4.1 Also remember to change our apiKey to just an empty String within "TMDBClient.swift"
-            // 04:15 Now before we run it, notice how I've changed our API key to just an empty String within "TMDBClient.swift" ... move there ... 
-            showLoginFailure(message: error?.localizedDescription ?? "")
+            // 04:02 If success is FALSE, then an error occurred. So in the else case, we can call "showLoginFailure" passing in error.localizedDescription making sure it's not nil thanks to expression ?? "".
+            // MARK: 4.1 Also remember to change our apiKey to just an empty String within "TMDBClient.swift" - Not apply this any more.
+            // 04:15 Now before we run it, notice how I've changed our API key to just an empty String within "TMDBClient.swift" - not apply this any more ... move there ...
+            showLoginFailure(message: error?.localizedDescription ?? "handleRequestTokenResponse")
         }
     }
     
@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
         if success {
             TMDBClient.createSessionId(completion: handleSessionResponse(success:error:))
         } else { /// new
-            showLoginFailure(message: error?.localizedDescription ?? "")
+            showLoginFailure(message: error?.localizedDescription ?? "handleLoginResponse")
         }
     }
     
@@ -64,7 +64,7 @@ class LoginViewController: UIViewController {
         if success {
                 self.performSegue(withIdentifier: "completeLogin", sender: nil)
         } else { /// new
-            showLoginFailure(message: error?.localizedDescription ?? "")
+            showLoginFailure(message: error?.localizedDescription ?? "handleSessionResponse")
         }
     }
     
@@ -91,7 +91,7 @@ class LoginViewController: UIViewController {
     func showLoginFailure(message: String) {
         let alertVC = UIAlertController(title: "OooNo, Login Failed", message: message, preferredStyle: .alert) // NEW: instead writing message now writing directly "Seems like Email or Password are wrong, try again".
         alertVC.addAction(UIAlertAction(title: "Okey", style: .default, handler: nil))
-        show(alertVC, sender: nil)
+        show(alertVC, sender: nil) // tried changing "sender: nil" to "sender: message"
         setLoggingIn(false) // NEW: so that activity indicator stops rotating and fields are enabled for re-inserting Email/Password
     }
 

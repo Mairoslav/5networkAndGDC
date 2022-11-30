@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 // MARK: 8. Alert for login failure - based on QuizQuestion - Modify the code so that specific errors are handled for POST requests (from 7. Code Review Handling Errors)
 /// comments are written in this style of font, comments in // orginal font stay from previous lesson
@@ -18,8 +19,8 @@ class TMDBClient {
     // 04:22 With an invalid apiKey, our request to the movie database should be rejected which will return an error. Let's see what happens. After typing login (having insterted wrong passwor or username), awesome, we get an alert. Well, a lot of the logic hre is specific to the Movie Manager. Using your own custom objects to handle errors will really come in handy as you build your own apps. Let's recap what we did to implement error handling... check recap in bolt comments.
     // 05:18 This is a great start to handling errors in TheMovieManager app. But now we're only handling errors for GET Requests. To better understand how the errors are handled, see if you can implement the same behaviour in "taskForPOSTRequest". Then in completion handlers for logging in and creating the sessionId, display an alert with the localized description as the error message. Done in "TheMovieManager19.xcodeproj".
     
-    // static let apiKey = "841622fb8a5a4f75f298f96cb8ba7cd9" // commented out
-    static let apiKey = ""
+    static let apiKey = "841622fb8a5a4f75f298f96cb8ba7cd9" // NEW: if you remove the API key the app will not work. It is required. It was only removed to force an error to occure as per previous exercise/s. 
+    // static let apiKey = ""
     /*
     WHEN static let apiKey =                    ""         "841622fb8a5a4f75f298f96cb8ba7cd9"
     can Login with correct Email and Password:  NO          YES
@@ -112,7 +113,7 @@ class TMDBClient {
                         // 02:01 THen we're going to parse the JSON again into a constant called errorResponse. This time, when we call decoder.decode, we are going to pass in TMDBResponse.self as the type to parse into. And the data is still the data returned from the Movie Database.
                         // 02:17 Like before because this call can throw, we also need to mark it with try
                         // 02:22 So assuming the parsing was successful, we now have an error message. But what we actually need to pass back to the login view controller is an error object. Remember that error is a protocol that lets our own types provide information about an error. And since the TMDBResponse is used to represent error messages, we can make it conform to the error protocol. // 02:40 Here I've extended TMDBResponse ... move to "TMDBResponse.swift" ...
-                        let errorResponse = try decoder.decode(TMDBResponse.self, from: data)
+                        let errorResponse = try decoder.decode(TMDBResponse.self, from: data) as Error // NEW added "as Error"
                         // 03:08 Now the TMDBResponse conforms to localized error and therefore the error protocol, we can simply pass it in as the error to our completion handler. Now back from "TMDBResponse.swift" here in "TMDBClient.swift" we'll do that if our parsing step was successful.
                         // 03:29 Like any other calls to the completion handler, we also need to make sure this is called on the main thread. So we'll need to wrap it in a call to async.
                         // 03:36 Great, so now we have an error with a localized description passed back to our view controller. Let's use it to update the UI. Here in the "LoginViewController.swift" ... move there ...
@@ -132,21 +133,25 @@ class TMDBClient {
     }
     
     /// 00:00 implementing error handling in "taskForPOSTRequest" is pretty straightforward. We'll use the similar approach as before. Parsing into TMDBResponse, which already conforms to the error protocol. So all we need to do here is modify the parsing code.
-    class func taskForPOSTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, body: RequestType, completion: @escaping (ResponseType?, Error?) -> Void) {
+    @discardableResult class func taskForPOSTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, body: RequestType, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask { // REV: added "-> URLSessionDataTask" and "@discardableResults"
+        
         var request = URLRequest(url: url)
+        
         request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try! JSONEncoder().encode(body)
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in // REV: deleted brackets () for data, ...
             guard let data = data else {
                 DispatchQueue.main.async {
                     completion(nil, error)
                 }
+                print("data failed")
                 return
             }
+            let decoder = JSONDecoder() // REV: declared decoder here once, instead of in below blocks twice
             do {
-                let decoder = JSONDecoder()
-                let responseObject = try decoder.decode(responseType.self, from: data)
+                let responseObject = try decoder.decode(responseType.self, from: data) // as Error // no causes error
                 DispatchQueue.main.async {
                     completion(responseObject, nil)
                 }
@@ -154,8 +159,8 @@ class TMDBClient {
                 /// 00:16 Instead of parsing back the JSON error here, we'll try another parsing step. Here there are three things to note. 1. The type we're parsing into is TMDBResponse, which matches the format for TMDB error message.
                 /// completion(nil, error), relocate to 2nd catch block
                 do {
-                    let decoder = JSONDecoder() /// Question3: why in "taskForGETRequest" did not need this line of code?
-                    let errorResponse = try decoder.decode(TMDBResponse.self, from: data)
+                    let errorResponse = try decoder.decode(TMDBResponse.self, from: data) as Error // REV: added "as Error"
+                    print("decoding failed during Login")
                     DispatchQueue.main.async {
                         /// 00:30 And because TMDBResponse conforms to the error protocol, we can pass the result back into our completion handler.
                         completion(nil, errorResponse)
@@ -171,6 +176,7 @@ class TMDBClient {
             }
         }
         task.resume()
+        return task // REV: added "return task"
     }
     
     class func getWatchlist(completion: @escaping ([Movie], Error?) -> Void) {
@@ -211,7 +217,7 @@ class TMDBClient {
                 Auth.requestToken = response.requestToken // **
                 completion(true, nil) // ***
             } else {
-                completion(false, nil)
+                completion(false, error) // REV: instead of "(false, nil)" corrected for "(false, error)", because if request does fail there is an error, not nil
             }
         }
     }
@@ -233,7 +239,7 @@ class TMDBClient {
         request.httpMethod = "DELETE"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try! JSONEncoder().encode(body)
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
                 DispatchQueue.main.async {
                     completion(nil, error)
