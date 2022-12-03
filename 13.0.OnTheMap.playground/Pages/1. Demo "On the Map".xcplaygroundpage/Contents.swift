@@ -15,7 +15,11 @@ import Foundation
 
 // 01:13 Now let's go back to the map. Here in the top-left corner, I have the option of posting a pin. The basic requirement of this app is that you could post as many pins as you would like. However, if you'd like to go the extra step, when you try to post a pin, you should check to see if a pin has already been posted for this user, and in my case, there already is a pin for me. So this Alert pop-up message/menu here is telling and asking me: "You Have Already Posted a Student Location. Would YouLike to Overwrite your Current Location?" giving me two options down in blue font: a) Overwrite and b) Cancel.
 
-// 01:39 I'll go ahead and select "Overwrite", 
+// 01:39 I'll go ahead and select "Overwrite", and now I am presented with this input view, with possibility to click button "Enter Your Location Here". I am going to overwrite my location to go back to my hometown of Huntsville Alabama, and by clicking on buttom "Find on the Map" I'll find it on the map.
+
+// 01:52 Behind the scenes, the app Geocodes location into a longitude and latitude where this pill will be placed. For my link, I'll share my LinkedIn profile via button "Enter a Link to Share Here". And then I'll tap "Submit". So now the input process is done and my new pin is posted her in Huntsville Alabama.
+
+// 02:11 And if I tap the pin, the pop up 'bubble' message (~annotation) shows up with my name and link to my LilnkedIn profile. And if I tap the annotation, then it takes me to my LinkedIn profile in Safari. These are the main user interactions for the app. If you are a visual learner like me, I hope this helps. 
 
 
 //: [Next](@next)
