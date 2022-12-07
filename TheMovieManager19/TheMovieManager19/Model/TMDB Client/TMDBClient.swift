@@ -133,7 +133,7 @@ class TMDBClient {
     }
     
     /// 00:00 implementing error handling in "taskForPOSTRequest" is pretty straightforward. We'll use the similar approach as before. Parsing into TMDBResponse, which already conforms to the error protocol. So all we need to do here is modify the parsing code.
-    @discardableResult class func taskForPOSTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, body: RequestType, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask { // REV: added "-> URLSessionDataTask" and "@discardableResults"
+    @discardableResult class func taskForPOSTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, body: RequestType, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionTask { // REV: added "-> URLSessionDataTask" and "@discardableResults"
         
         var request = URLRequest(url: url)
         
@@ -212,7 +212,7 @@ class TMDBClient {
     
     class func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
         let body = LoginRequest(username: username, password: password, requestToken: Auth.requestToken) // *
-        taskForPOSTRequest(url: Endpoints.login.url, responseType: RequestTokenResponse.self, body: body) { (response, error) in
+        taskForPOSTRequest(url: Endpoints.login.url, responseType: RequestTokenResponse.self, body: body) { response, error in
             if let response = response {
                 Auth.requestToken = response.requestToken // **
                 completion(true, nil) // ***
@@ -233,7 +233,7 @@ class TMDBClient {
             }
         }
     }
-    
+    /*
     class func taskForDELETERequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, body: RequestType, completion: @escaping (ResponseType?, Error?) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
@@ -266,9 +266,9 @@ class TMDBClient {
                 Auth.success = response.success 
                 completion()
             }
-        }
+        } 
     }
-    
+    */
     class func search(query: String, completion: @escaping ([Movie], Error?) -> Void) -> URLSessionTask {
         let task = taskForGETRequest(url: Endpoints.search(query).url, response: MovieResults.self) { (response, error) in // **
             if let response = response {
