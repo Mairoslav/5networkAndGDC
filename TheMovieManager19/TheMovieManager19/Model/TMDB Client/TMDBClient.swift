@@ -233,7 +233,7 @@ class TMDBClient {
             }
         }
     }
-    /*
+    
     class func taskForDELETERequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, body: RequestType, completion: @escaping (ResponseType?, Error?) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
@@ -268,7 +268,7 @@ class TMDBClient {
             }
         } 
     }
-    */
+    
     class func search(query: String, completion: @escaping ([Movie], Error?) -> Void) -> URLSessionTask {
         let task = taskForGETRequest(url: Endpoints.search(query).url, response: MovieResults.self) { (response, error) in // **
             if let response = response {

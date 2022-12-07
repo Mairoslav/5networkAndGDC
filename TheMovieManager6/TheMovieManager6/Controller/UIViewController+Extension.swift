@@ -15,11 +15,14 @@ extension UIViewController {
     
     @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
         // TODO: 8.0 In the completion handler, dismiss the view controller on the main thread.
-        DispatchQueue.main.async {
-            self.dismiss(animated: true, completion: nil)
-            print("now logged out")
+        TMDBClient.logout {
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+                print("now logged out")
+            }
         }
     }
+    
 }
 
 // That's all there is to it. With a basic knowdelge of making HTTP requests, we can implement all the steps of the authentication flow, including tha ability to log out.
