@@ -13,11 +13,14 @@ extension UIViewController {
     // MARK: Reflect - because of implementing a "taskForDELETERequest" method in "TMDBClient.swift" here removing async()
     
     @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
-        // DispatchQueue.main.async {
-            self.dismiss(animated: true, completion: nil)
-            print("now logged out")
-        // }
+        TMDBClient.logout {
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+                print("now logged out")
+            }
+        }
     }
+    
 }
 
 

@@ -36,5 +36,53 @@
             landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "14108BF8-2592-48FA-BDE6-73C2EBE66894"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheMovieManager19/Controller/UIViewController+Extension.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "logoutTapped(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "14108BF8-2592-48FA-BDE6-73C2EBE66894 - 39684a1b96838dd3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__C.UIViewController.logoutTapped(__C.UIBarButtonItem) -&gt; ()"
+                  moduleName = "TheMovieManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mairo/Documents/13%20Udacity/5networkAndGDC/TheMovieManager19/TheMovieManager19/Controller/UIViewController+Extension.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "14108BF8-2592-48FA-BDE6-73C2EBE66894 - 174eadc8a43ca2ee"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in __C.UIViewController.logoutTapped(__C.UIBarButtonItem) -&gt; ()"
+                  moduleName = "TheMovieManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mairo/Documents/13%20Udacity/5networkAndGDC/TheMovieManager19/TheMovieManager19/Controller/UIViewController+Extension.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "152">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
